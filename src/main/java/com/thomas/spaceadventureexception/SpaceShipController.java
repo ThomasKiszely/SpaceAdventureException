@@ -193,7 +193,6 @@ public class SpaceShipController {
                 addTwoChoice();
                 runStory();
             }
-
             else if (choice == 5) {
                 choice = choice - 1;
                 runStory();

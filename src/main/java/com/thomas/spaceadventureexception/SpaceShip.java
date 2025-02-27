@@ -4,18 +4,19 @@ import javafx.scene.control.Alert;
 
 import java.io.IOException;
 
-public class SpaceShip {
-    int fuel = 100;
-    int integrity = 100;
-    String name;
-    String captain;
+public class SpaceShip extends Ship implements HasFuel, HasIntegrity{
+    private int fuel = 100;
+    private int integrity = 100;
+//    String name;
+    private String captain;
     StoryController storyController = new StoryController();
 
     public SpaceShip(String captain, int fuel, int integrity) {
-        this.name = name;
-        this.captain = captain;
-        this.fuel = fuel;
-        this.integrity = integrity;
+        super(captain, fuel, integrity);
+//        this.name = name;
+//        this.captain = captain;
+//        this.fuel = fuel;
+//        this.integrity = integrity;
     }
     public int getFuel() {
         return fuel;
@@ -29,6 +30,7 @@ public class SpaceShip {
     public void setIntegrity(int integrity) {
         this.integrity = integrity;
     }
+    @Override
     public void calculateFuel() {
         System.out.println(fuel);
         int fuelLost = (int) (Math.random()*100);
@@ -40,6 +42,7 @@ public class SpaceShip {
             throw new OutAFuelException("Warning: Out AFuel");
         }
     }
+    @Override
     public void calculateIntegrity() {
         int integrityLost = (int) (Math.random()*100);
         integrity -= integrityLost;
